@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 // import viteLogo from "/vite.svg";
 import "./App.css";
 import toast, { Toaster } from "react-hot-toast";
-import SearchBar from "./components/SearchBar/SearchBar";
-import MovieModal from "./components/MovieModal/MovieModal";
-import MovieGrid from "./components/MovieGrid/MovieGrid";
-import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import type { Movie } from "./types/movie";
-import { fetchMovies } from "./services/movieService";
+import SearchBar from "../SearchBar/SearchBar";
+import MovieModal from "../MovieModal/MovieModal";
+import MovieGrid from "../MovieGrid/MovieGrid";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import type { Movie } from "../../types/movie";
+import { fetchMovies } from "../../services/movieService";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
