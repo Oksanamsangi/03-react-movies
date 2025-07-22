@@ -9,7 +9,7 @@ import MovieGrid from "./components/MovieGrid/MovieGrid";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import type { Movie } from "./types/movie";
-import { fetchMovies } from "./Service/movieService";
+import { fetchMovies } from "./services/movieService";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
