@@ -9,7 +9,8 @@ interface MovieModalProps {
 }
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
-    useEffect(() => {
+  useEffect(() => {
+   
         const keyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                onClose() 
@@ -22,10 +23,20 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
             window.removeEventListener("keydown", keyDown);
             document.body.style.overflow = "";
         }
-    })
+  }, [onClose])
+   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+     if (e.target === e.currentTarget) {
+       onClose();
+     }
+   };
     
 return createPortal(
-  <div className={css.backdrop} role="dialog" aria-modal="true">
+  <div
+    className={css.backdrop}
+    onClick={handleBackdropClick}
+    role="dialog"
+    aria-modal="true"
+  >
     <div className={css.modal}>
       <button
         className={css.closeButton}
@@ -53,5 +64,4 @@ return createPortal(
   </div>,
   document.body
 );
-
 }

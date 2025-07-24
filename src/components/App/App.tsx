@@ -38,9 +38,7 @@ function App() {
     };
     load();
   }, [query]);
-  const handleSearch = (newQuery: string) => {
-    setQuery(newQuery);
-  };
+  
   const handleSelect = (movie: Movie) => {
     setSelectedMovie(movie);
   };
@@ -51,7 +49,14 @@ function App() {
   return (
     <>
       <Toaster position="top-right" />
-      <SearchBar onSubmit={handleSearch} />
+      <SearchBar
+        action={async (formData) => {
+          const query = (formData.get("query") as string).trim();
+          if (query) {
+            setQuery(query);
+          }
+        }}
+      />
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {!loading && !error && (
